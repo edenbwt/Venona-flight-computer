@@ -1,0 +1,9 @@
+component i will use 
+    gyroscope :
+       mpu6050 (https://www.gotronic.fr/art-module-6-dof-sen-mpu6050-31492.htm)
+
+    altimetre :
+      bmp180 (https://letmeknow.fr/fr/environnementaux/510-bmp180-senseur-de-pression-barometrique-gy-68-0053119782589.html)
+
+    CPU :
+      arduino micro (https://diydomo.com/boutique/microcontroleur/carte-arduino-compatible/arduino-pro-micro-usb-atmega32u4-compatible-leonardo/)
