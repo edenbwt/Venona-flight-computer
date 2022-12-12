@@ -18,6 +18,6 @@ this is the code and software i use for my model rocket to control and log data 
 ![App Screenshot](https://cdn.discordapp.com/attachments/936282025588064273/1051940479257804910/Capture_decran_2022-12-12_201503.png)
 
 - this is the rocket the computer will be tested on 
-- this rocket is design on Open Rocket
+- this rocket is design on Open [Open Rocket](https://openrocket.info/)
 
 
