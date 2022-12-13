@@ -9,7 +9,7 @@ this is the code and software i use for my model rocket to control and log data 
 - Arduino C++ firmware
 
 ## Parts
-- computer : Arduino Micro Pro
+- computer : Teensy 3.6 dev board
 - gyroscope : mpu6050
 - altimetre : bmp180 or BME280
 
