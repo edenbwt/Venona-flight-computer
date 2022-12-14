@@ -12,6 +12,8 @@ this is the code and software i use for my model rocket to control and log data 
 - computer : Teensy 3.6 dev board
 - gyroscope : mpu6050
 - altimetre : bosch bmp280
+- n chanel mosfet for pyro
+- tricolor Led
 
 ## The rocket
 
