@@ -4,7 +4,7 @@ this is the code and software i use for my model rocket to control and log data 
 ## Goal
 
 - log fly data
-- 2 pyro chanel
+- 4 pyro chanel
 - quite light
 - Arduino C++ firmware
 
