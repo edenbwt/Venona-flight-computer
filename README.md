@@ -23,11 +23,10 @@ the goal of this flight computer is to be easy to manufacture be mobulable for a
 - this is the rocket the computer will be tested on 
 - this rocket is design on [Open Rocket](https://openrocket.info/)
 
-## The base of the code
+## The board
 
-![App Screenshot](https://cdn.discordapp.com/attachments/936282025588064273/1052314296647942177/Capture_decran_2022-12-13_210053.png)
+![App Screenshot](https://cdn.discordapp.com/attachments/936282025588064273/1052977486251692032/Venona.png)
 
-- this is the base of the code i will use on the fly computer 
-- side note this is complite shit ans i will remake this later, love Eden 
+- this is the board i made it in one 10h go i probably fuck up doing it BUT i think it will run for tsting
 
 
