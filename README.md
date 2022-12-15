@@ -1,5 +1,5 @@
 # Venona flight computer
-this is the code and software i use for my model rocket to control and log data from the flight 
+the goal of this flight computer is to be easy to manufacture be mobulable for all kind of mission 
 
 ## Goal
 
