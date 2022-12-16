@@ -29,7 +29,7 @@ the goal of this flight computer is to be easy to manufacture be mobulable for a
 
 - this is the board, i made it in one 10h go i probably fuck it up doing it BUT i think it will run for tsting for now
 - i will by all the part after christmas so i can try it out later in 2023
-- this board is design on [Autodesk Eagle]([https://openrocket.info/](http://eagle.autodesk.com/))
+- this board is design on [Autodesk Eagle](https://openrocket.info/](http://eagle.autodesk.com/)
 
 
 
