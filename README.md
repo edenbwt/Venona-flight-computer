@@ -28,5 +28,9 @@ the goal of this flight computer is to be easy to manufacture be mobulable for a
 ![App Screenshot](https://i.ibb.co/tp0zj7c/Venona-V1-0-0.png)
 
 - this is the board, i made it in one 10h go i probably fuck it up doing it BUT i think it will run for tsting for now
+- i will by all the part after christmas so i can try it out later in 2023
+
+
+
 
 
