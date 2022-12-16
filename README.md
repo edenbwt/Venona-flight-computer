@@ -25,7 +25,7 @@ the goal of this flight computer is to be easy to manufacture be mobulable for a
 
 ## The board
 
-![App Screenshot](https://cdn.discordapp.com/attachments/936282025588064273/1052977486251692032/Venona.png)
+![App Screenshot](blob:https://teams.microsoft.com/f440e449-1130-4de3-a03c-fa176e24e680)
 
 - this is the board, i made it in one 10h go i probably fuck it up doing it BUT i think it will run for tsting for now
 
