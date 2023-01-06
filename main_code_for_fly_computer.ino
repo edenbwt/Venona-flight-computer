@@ -4,19 +4,26 @@
 #include <Adafruit_BMP280.h>
 #include <Adafruit_MPU6050.h>
 
+// Code written by Eden https://github.com/edenbwt if your using it please give me credit for it i work a lot to make this board and software.
+
+//========================================variables========================================//
+
 // Create objects for each sensor
 Adafruit_BMP280 bmp;
 Adafruit_MPU6050 mpu;
 
 //Create objects for each user device
-const int Led_red = 5;
+//for the Rgb Led on the board the LED is a common-anode on = low
+const int Led_red = 9;
 const int Led_green = 6;
-const int Led_bleu = 7; //for the Rgb Led on the board
+const int Led_bleu = 7; 
 
 const int Buzzer = 8;
 
 const int pyro1Pin = 2; // pin for pyrotechnic channel 1
 const int pyro2Pin = 3; // pin for pyrotechnic channel 2
+const int pyro3Pin = 4; // pin for pyrotechnic channel 3
+const int pyro4Pin = 5; // pin for pyrotechnic channel 4
 
 int pyro1Status = LOW; // status of pyro channel 1 (LOW = off, HIGH = on)
 int pyro2Status = LOW; // status of pyro channel 2 (LOW = off, HIGH = on)
@@ -29,12 +36,22 @@ int16_t ax, ay, az, gx, gy, gz; //a is for acceleration read in Gforce, g is for
 File dataFile;
 String dataString;
 
+
+//=====================================================================================================================================================//
+//                                                                        Setup                                                                        //
+//=====================================================================================================================================================//
+
+
 void setup() {
 // Initialize pyro channels 
 pinMode(pyro1Pin, OUTPUT);
 pinMode(pyro2Pin, OUTPUT);
+pinMode(pyro3Pin, OUTPUT);
+pinMode(pyro4Pin, OUTPUT);
 digitalWrite(pyro1Pin, pyro1Status);
 digitalWrite(pyro2Pin, pyro2Status);
+digitalWrite(pyro3Pin, pyro3Status);
+digitalWrite(pyro4Pin, pyro4Status);
 
 // Initialize Led 
 pinMode(Led_red, OUTPUT);
@@ -68,26 +85,57 @@ digitalWrite(Led_red, LOW);
 dataFile = SD.open("flight_data.txt", FILE_WRITE);
 }
 
+
+
+//====================================================================================================================================================================//
+//                                                                        Main Loop                                                                                   //
+//====================================================================================================================================================================//
+
+
 void loop() {
 // Read sensor data
 temperature = bmp.readTemperature();
 pressure = bmp.readPressure() / 100.0F;
-altitude = bmp.readAltitude(1013.25); // assuming standard pressure at sea level
+altitude = bmp.readAltitude(1013.25); // assuming standard pressure at sea level, well noing that never the case 
 mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
 
 // Build data string to log
-dataString = "Temperature: " + String(temperature) + " C\nPressure: " + String(pressure) + " hPa\nAltitude: " + String(altitude) + " m\nAcceleration (x, y, z): " + String(ax) + ", " + String(ay) + ", " + String(az) + "\nGyroscope (x, y, z): " + String(gx) + ", " + String(gy) + ", " + String(gz) + "\n";
+dataString = "[Temperature] : " + String(temperature) + " C\n[Pressure] : " + String(pressure) + " hPa\n[Altitude] : " + String(altitude) + " m\n[Acceleration] (x, y, z): " + String(ax) + ", " + String(ay) + ", " + String(az) + "\n[Gyroscope] (x, y, z): " + String(gx) + ", " + String(gy) + ", " + String(gz) + "\n";
 
+// Pyro event 
+PyroStringEventN°1 = "[!] Event Pyro n°1 GO OFF\n";
+PyroStringEventN°2 = "[!] Event Pyro n°2 GO OFF\n";
 // Write data string to file
 dataFile.println(dataString);
 
+//===============================================pyrotechnic 1-4 =================================================//
+
 // Check if pyro channels should be activated
-if (ay < -0.5) {
-pyro1Status = HIGH;
-digitalWrite(pyro1Pin, pyro1Status);
+if (ay < -0.5) { //y-axis acceleration of the object. If the acceleration is less than a certain negative threshold (in this case, -0.5 g), then the object is considered to be falling.
+        // setting off Pyro channels 1
+    pyro1Status = HIGH;
+    digitalWrite(pyro1Pin, pyro1Status);
+
+        // Write in dataFile event for pyro going off 
+    dataFile.println(PyroStringEventN°1);
 }
+    
     //if (/ some condition */) {
     //pyro2Status = HIGH;
     //digitalWrite(pyro2Pin, pyro2Status);
     //}
+
+    //if (/ some condition */) {
+    //pyro3Status = HIGH;
+    //digitalWrite(pyro3Pin, pyro3Status);
+    //}
+
+    //if (/ some condition */) {
+    //pyro4Status = HIGH;
+    //digitalWrite(pyro4Pin, pyro4Status);
+    //}
 }
+
+
+
+
