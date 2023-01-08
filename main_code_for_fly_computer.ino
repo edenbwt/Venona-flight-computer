@@ -20,6 +20,9 @@ const int Led_bleu = 7;
 
 const int Buzzer = 8;
 
+const int voltagePin = A0;  // Pin where the voltage divider is connected
+const float batteryVoltage = 12.0;  // The nominal voltage of the battery
+
 const int pyro1Pin = 2; // pin for pyrotechnic channel 1
 const int pyro2Pin = 3; // pin for pyrotechnic channel 2
 const int pyro3Pin = 4; // pin for pyrotechnic channel 3
@@ -93,6 +96,24 @@ dataFile = SD.open("flight_data.txt", FILE_WRITE);
 
 
 void loop() {
+//==================================================Batt================================================//
+int voltage = analogRead(voltagePin);
+
+// Convert the voltage to a battery voltage
+float batteryVoltage = (voltage / 1023.0) * 5.0 * 2.0;
+  
+  // Calculate the percentage of charge remaining
+float chargePercentage = (batteryVoltage / batteryVoltage) * 100.0;
+  
+  // Print the percentage of charge remaining to the serial console
+Serial.println("[Batt] : " + chargePercentage + "%\n");
+if (chargePercentage < 50.0) {
+    digitalWrite(Led_red, LOW);
+} else {
+    digitalWrite(Led_green, LOW)
+}
+
+//=============================================Sensors===========================================================//
 // Read sensor data
 temperature = bmp.readTemperature();
 pressure = bmp.readPressure() / 100.0F;
@@ -108,6 +129,7 @@ PyroStringEventN°2 = "[!] Event Pyro n°2 GO OFF\n";
 // Write data string to file
 dataFile.println(dataString);
 
+
 //===============================================pyrotechnic 1-4 =================================================//
 
 // Check if pyro channels should be activated
@@ -118,6 +140,7 @@ if (ay < -0.5) { //y-axis acceleration of the object. If the acceleration is les
 
         // Write in dataFile event for pyro going off 
     dataFile.println(PyroStringEventN°1);
+    digitalWrite(Led_bleu, LOW);
 }
     
     //if (/ some condition */) {
@@ -135,6 +158,7 @@ if (ay < -0.5) { //y-axis acceleration of the object. If the acceleration is les
     //digitalWrite(pyro4Pin, pyro4Status);
     //}
 }
+
 
 
 
