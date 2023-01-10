@@ -160,6 +160,24 @@ if (ay < -0.5) { //y-axis acceleration of the object. If the acceleration is les
 }
 
 
+//fonction for the different sond i will use to notify my self fot differnt events 
 
+//i did not add any sond yett because i want to hear what i code :)
+void buzzer_batt_low{
+    
+
+}
+
+void buzzer_reday{
+    
+
+}
+
+
+
+void buzzer_hope_to_tutch_ground{
+    
+
+}
 
 
